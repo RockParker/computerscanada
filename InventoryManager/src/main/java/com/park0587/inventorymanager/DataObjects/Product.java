@@ -1,7 +1,12 @@
 package com.park0587.inventorymanager.DataObjects;
+
+import com.park0587.inventorymanager.DataObjects.OrderProductDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 
 @Entity
@@ -12,7 +17,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="product_id")
     private long productId;
 
     @Column(name="name", nullable=false, length = 50)
@@ -30,7 +35,7 @@ public class Product {
     @Column(name="quantity_in_stock", nullable=false)
     private int quantity;
 
-/*    @JsonIgnore
+    @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<OrderProductDto> orderProducts;*/
+    private List<OrderProductDto> orderProducts;
 }

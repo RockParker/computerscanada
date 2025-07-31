@@ -2,6 +2,7 @@ package com.park0587.orderhandler.RestControllers;
 
 import com.park0587.orderhandler.DataObjects.Order;
 import com.park0587.orderhandler.DataObjects.OrderProduct;
+import com.park0587.orderhandler.Repositories.CustomerRepository;
 import com.park0587.orderhandler.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,8 @@ public class OrderController {
 
     @Autowired
     private OrderRepository orderRepo;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @PostMapping
     public ResponseEntity<Order> placeOrder(@RequestBody Order order) {
@@ -33,6 +36,10 @@ public class OrderController {
         }
         order.setTotalAmount(total);
 
+        var customer = customerRepository.findById(order.getCustomer().getCustomerId())
+                .orElseThrow(() -> new RuntimeException("Customer not found"));
+        order.setCustomer(customer); // set the customer reference
+
         Order saved = orderRepo.save(order);
         return ResponseEntity.status(HttpStatus.CREATED).body(saved);
     }
@@ -47,5 +54,27 @@ public class OrderController {
         return orderRepo.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Order> updateOrder(@PathVariable long id, @RequestBody Order order) {
+        if (!orderRepo.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        var existingOrder = orderRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        existingOrder.setOrderStatus(order.getOrderStatus());
+
+        return ResponseEntity.ok(orderRepo.save(existingOrder));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable long id) {
+        if (!orderRepo.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        orderRepo.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

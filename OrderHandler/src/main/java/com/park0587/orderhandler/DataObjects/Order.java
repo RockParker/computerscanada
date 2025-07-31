@@ -1,4 +1,6 @@
 package com.park0587.orderhandler.DataObjects;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +16,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name="order_id")
     private long orderId;
 
 /*    @Column(name="customer_id", nullable=false)
@@ -29,8 +31,9 @@ public class Order {
     @Column(name="total_amount")
     private double totalAmount;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="customerId", nullable=false)
+    @JoinColumn(name="customer_id", nullable=false)
     private Customer customer;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)

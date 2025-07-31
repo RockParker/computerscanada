@@ -34,6 +34,19 @@ public class CustomerController {
         return customerRepo.findAll();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer){
+        return customerRepo.findById(id)
+                .map(existingCustomer -> {
+                    existingCustomer.setName(customer.getName());
+                    existingCustomer.setEmail(customer.getEmail());
+                    existingCustomer.setPhone(customer.getPhone());
+                    Customer updated = customerRepo.save(existingCustomer);
+                    return ResponseEntity.ok(updated);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
         if (customerRepo.existsById(id)) {

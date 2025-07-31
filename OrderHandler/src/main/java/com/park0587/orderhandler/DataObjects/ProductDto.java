@@ -9,14 +9,4 @@ import lombok.Setter;
 public class ProductDto
 {
     private long productId;
-
-    private String name;
-
-    private String brand;
-
-    private String category;
-
-    private double price;
-
-    private int quantity;
 }

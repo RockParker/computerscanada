@@ -1,0 +1,772 @@
+{
+	"info": {
+		"_postman_id": "6ddd8971-4878-448f-9b78-8f894622b4b0",
+		"name": "FinalProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31068183",
+		"_collection_link": "https://algonquin-college-student-plan.postman.co/workspace/TriageTesting~36590b31-e241-4957-b911-1c0679b2e4c6/collection/31068183-6ddd8971-4878-448f-9b78-8f894622b4b0?action=share&source=collection_link&creator=31068183"
+	},
+	"item": [
+		{
+			"name": "ProductTests",
+			"item": [
+				{
+					"name": "PostProduct",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Gaming Laptop \",\r\n    \"brand\": \"TechBrand\",\r\n    \"category\": \"Laptops\",\r\n    \"price\": 1299.99,\r\n    \"quantity\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8181/api/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllProducts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8181/api/inventory",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"inventory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetProduct1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8181/api/inventory/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"inventory",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutProduct1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": 1,\r\n  \"name\": \"This is a test of the put method\",\r\n  \"brand\": \"put test\",\r\n  \"category\": \"testing\",\r\n  \"price\": 1399.99,\r\n  \"quantity\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8181/api/inventory/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"inventory",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8181/api/inventory/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"api",
+								"inventory",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OrderTests",
+			"item": [
+				{
+					"name": "PostOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer\": {\r\n    \"customerId\": 1\r\n  },\r\n  \"orderStatus\": \"Processing\",\r\n  \"orderProducts\": [\r\n    {\r\n        \"productId\": 1,\r\n        \"quantity\": 2,\r\n        \"priceAtPurchase\": 89.99\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8282/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllOrders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8282/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetOrder1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8282/api/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutOrder1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"customer\": {\r\n    \"customerId\": 2\r\n  },\r\n  \"orderStatus\": \"Complete\",\r\n  \"orderProducts\": [\r\n    {\r\n        \"productId\": 1,\r\n        \"quantity\": 2,\r\n        \"priceAtPurchase\": 89.99\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8282/api/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteOrder1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8282/api/orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CustomerTests",
+			"item": [
+				{
+					"name": "PostCustomer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jane Doe\",\r\n    \"email\":\"test2@testemail.com\",\r\n    \"phone\":\"5085072209\",\r\n    \"shippingAddress\":\"102 Charming Avenue, 100 200, NY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8282/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCustomers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8282/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCustomer1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8282/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PutCustomer1",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Jobert Doe\",\r\n    \"email\":\"testing2@testemail.com\",\r\n    \"phone\":\"5085072209\",\r\n    \"shippingAddress\":\"102 Not Robert Avenue, 100 200, NY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8282/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteCustomer1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8282/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8282",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GatewayTests",
+			"item": [
+				{
+					"name": "ProductTests",
+					"item": [
+						{
+							"name": "PostProduct",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"From Gateway\",\r\n    \"brand\": \"TechBrand\",\r\n    \"category\": \"Laptops\",\r\n    \"price\": 1299.99,\r\n    \"quantity\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8989/api/inventory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"inventory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllProducts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/inventory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"inventory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetProduct1",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/inventory/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"inventory",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PutProduct1",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"commuter backpack\",\r\n    \"brand\": \"lttstore.com\",\r\n    \"category\": \"bags\",\r\n    \"price\": 199.99,\r\n    \"quantity\": 15\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8989/api/inventory/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"inventory",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteProduct1",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/inventory/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"inventory",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OrderTests",
+					"item": [
+						{
+							"name": "PostOrder",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"customer\": {\r\n    \"customerId\": 1\r\n  },\r\n  \"orderStatus\": \"Processing\",\r\n  \"orderProducts\": [\r\n    {\r\n        \"productId\": 1,\r\n        \"quantity\": 2,\r\n        \"priceAtPurchase\": 89.99\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8989/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllOrders",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/orders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetOrder1",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/orders/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PutOrder1",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"customer\": {\r\n    \"customerId\": 2\r\n  },\r\n  \"orderStatus\": \"Complete\",\r\n  \"orderProducts\": [\r\n    {\r\n        \"productId\": 1,\r\n        \"quantity\": 2,\r\n        \"priceAtPurchase\": 89.99\r\n    }\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8989/api/orders/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteOrder1",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/orders/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "CustomerTests",
+					"item": [
+						{
+							"name": "PostCustomer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Jane Doe\",\r\n    \"email\":\"test2@testemail.com\",\r\n    \"phone\":\"5085072209\",\r\n    \"shippingAddress\":\"102 Charming Avenue, 100 200, NY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8989/api/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllCustomers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/customers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetCustomer1",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "PutCustomer1",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Jobert Doe\",\r\n    \"email\":\"testing2@testemail.com\",\r\n    \"phone\":\"5085072209\",\r\n    \"shippingAddress\":\"102 Not Robert Avenue, 100 200, NY\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8989/api/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DeleteCustomer1",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8989/api/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8989",
+									"path": [
+										"api",
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
